@@ -1,0 +1,14 @@
+{
+  "name": "jspr",
+  "version": "0.0.1",
+  "description": "js expr",
+  "main": "index.js",
+  "scripts": {
+    "build": "jison ./src/expr.jison -o ./src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jison": "^0.4.18"
+  }
+}
