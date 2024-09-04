@@ -20,11 +20,15 @@ true|false            return 'BOOLEAN'
 "/"                   return '/'
 "^"                   return '^'
 "?"                   return '?'
+"!="                  return '!='
 "!"                   return '!'
 "&&"                  return '&&'
 "||"                  return '||'
 "=="                  return '=='
-"!="                  return '!='
+">="                  return '>='
+"<="                  return '<='
+">"                   return '>'
+"<"                   return '<'
 "."                   return '.'
 <<EOF>>               return 'EOF'
 .                     return 'INVALID'
@@ -36,6 +40,10 @@ true|false            return 'BOOLEAN'
 %left '&&'
 %left '=='
 %left '!='
+%left '>='
+%left '<='
+%left '>'
+%left '<'
 %left '+'
 %left '-'
 %left '*'
@@ -73,6 +81,14 @@ e
         { $$ = $1 == $3; }
     | e '!=' e
         { $$ = $1 != $3; }
+    | e '>=' e
+        { $$ = $1 >= $3; }
+    | e '<=' e
+        { $$ = $1 <= $3; }
+    | e '>' e
+        { $$ = $1 > $3; }
+    | e '<' e
+        { $$ = $1 < $3; }
     | e '?' e ':' e
         { $$ = $1 ? $3 : $5; }
     | '!' e
